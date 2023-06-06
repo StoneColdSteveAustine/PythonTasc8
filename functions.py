@@ -25,3 +25,74 @@ def search(book: str, info: str) -> list[str]:
     """Находит в списке записи по определенному критерию поиска"""
     book = book.split('\n')
     return list(filter(lambda contact: info.lower() in contact.lower(), book))
+
+def edit_data(book.txt):
+    """Изменяет информацию из файла"""
+print(f'\n{num} |{fio} | {phone_num}')
+with open(book.txt, "r", encoding="utf-8") as file:
+data = file.read()
+print(data)
+print("")
+index_delete_data = int(input("Введите номер строки для редактирования: ")) — 1
+data_lines = data.split("\n")
+edit_data_lines = data_lines[index_delete_data]
+elements = edit_data_lines.split(" | ")
+fio = input("Введите ФИО: ")
+phone_num = input("Введите номер телефона: ")
+    num = elements[0]
+       if len(fio) == 0:
+          fio = elements[1]
+             if len(phone_num) == 0:
+               phone_num = elements[2]
+edited_line = (f"{num} | {fio} | {phone_num}")
+data_lines[index_delete_data] = edited_line
+print(f"Запись — {edit_data_lines}, изменена на — {edited_line}\n")
+with open(book.txt, «w», encoding=’utf-8′) as data:
+     data.write("\n".join(data_lines))
+        
+def delete_data(book.txt):
+     """Удаляет информацию из файла"""
+print(f'\n{num} | {fio} | {phone_num}')
+with open(book.txt, «r», encoding=»utf-8″) as file:
+data = file.read()
+print(data)
+print("")
+index_delete_data = int(input("Введите номер строки для удаления: ")) — 1
+data_lines = data.split("\n")
+del_data_lines = data_lines[index_delete_data]
+data_lines.pop(index_delete_data)
+print(f"Удалена запись: {del_data_lines}\n")
+with open(book.txt, «w», encoding=’utf-8′) as data:
+data.write("\n".join(data_lines))
+
+def main():
+my_choice = -1
+file_tel = «tel.txt»
+
+# Создает файл если его нет в папке
+with open(file_tel, «a», encoding=»utf-8″) as file:
+file.write(«»)
+
+while my_choice != 0:
+print(«Выберите одно из действий:»)
+print(«1 — Вывести инфо на экран»)
+print(«2 — Произвести экпорт данных»)
+print(«3 — Произвести изменение данных»)
+print(«4 — Произвести удаление данных»)
+print(«0 — Выход из программы»)
+action = int(input(«Действие: «))
+if action == 1:
+show_data(file_tel)
+elif action == 2:
+export_data(file_tel)
+elif action == 3:
+edit_data(file_tel)
+elif action == 4:
+delete_data(file_tel)
+else:
+my_choice = 0
+
+print(«До свидания»)
+
+if __name__ == «__main__»:
+main()
